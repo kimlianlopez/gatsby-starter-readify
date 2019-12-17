@@ -1,6 +1,6 @@
 const config = {
   siteTitle: 'Gatsby Starter Readify', // Site title.
-  siteTitleShort: 'Gatsby Starter Readify', // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
+  siteTitleShort: 'Gatsby Readify', // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: 'Gatsby Starter Readify', // Alternative site title for SEO.
   siteName: 'Gatsby Starter Readify',
   siteLogo: '/img/logo-black.png', // Logo used for SEO and manifest.

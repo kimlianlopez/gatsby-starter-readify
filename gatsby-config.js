@@ -38,6 +38,7 @@ module.exports = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -54,10 +55,22 @@ module.exports = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 2048
+              maxWidth: 1000
             }
           }
         ]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: config.siteTitle,
+        short_name: config.siteTitleShort,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `${__dirname}/src/images/favicon.png`
       }
     },
     {
@@ -67,5 +80,16 @@ module.exports = {
       }
     },
     `gatsby-plugin-styled-components`
+    // {
+    //   resolve: 'gatsby-plugin-netlify-cms',
+    //   options: {
+    //     modulePath: `${__dirname}/src/cms/cms.js`,
+    //     enableIdentityWidget: true,
+    //     publicPath: 'admin',
+    //     htmlTitle: `${config.siteTitle} Content Manager`,
+    //     includeRobots: false
+    //   }
+    // },
+    // 'gatsby-plugin-netlify'
   ]
 };

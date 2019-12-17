@@ -1,16 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Header from './Header';
-import Footer from './Footer';
+import { ThemeProvider } from '../context/ThemeContext';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import '../styles/bootstrap-forms.css';
-
-const MainWrapper = styled.main`
-  margin-top: ${props => props.theme.spacing.offsetTop};
-  background-color: ${props => props.theme.color.background};
-  flex-grow: 1;
-`;
 
 const SiteWrapper = styled.div`
   display: flex;
@@ -47,22 +40,12 @@ const SiteWrapper = styled.div`
   }
 `;
 
-const Wrapper = ({ children, inEditor }) => {
-  if (!!inEditor) {
-    return (
-      <SiteWrapper id="__siteWrapper">
-        <MainWrapper>{children}</MainWrapper>
-      </SiteWrapper>
-    );
-  }
-
+const BootstrapLoader = ({ children }) => {
   return (
-    <SiteWrapper id="__siteWrapper">
-      <Header />
-      <MainWrapper>{children}</MainWrapper>
-      <Footer />
-    </SiteWrapper>
+    <ThemeProvider>
+      <SiteWrapper>{children}</SiteWrapper>
+    </ThemeProvider>
   );
 };
 
-export default Wrapper;
+export default BootstrapLoader;
