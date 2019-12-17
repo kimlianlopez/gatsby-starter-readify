@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import Footer from './Footer';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import '../styles/bootstrap-forms.css';
 
 const MainWrapper = styled.main`
   margin-top: ${props => props.theme.spacing.offsetTop};
@@ -28,10 +29,20 @@ const SiteWrapper = styled.div`
 
   a {
     text-decoration: none;
-    color: ${props => props.theme.color.secondary};
+    color: ${props => props.theme.color.linkText};
 
     &:hover {
+      color: ${props => props.theme.color.linkHoverText};
       text-decoration: underline;
+    }
+  }
+
+  .form-control {
+    &:focus,
+    &:active {
+      box-shadow: 0 0 0 0.2rem ${props => props.theme.color.primary};
+      border: ${props => props.theme.color.primary};
+      outline: none;
     }
   }
 `;

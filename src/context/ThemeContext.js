@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
-import getTheme from '../utils/themes';
+import getTheme from '../themes/getTheme';
 
 const defaultTheme = {
-  name: 'green',
-  darkMode: false
+  name: 'Deep Blue',
+  darkMode: true
 };
 
 const ThemeProvider = ({ children }) => {
