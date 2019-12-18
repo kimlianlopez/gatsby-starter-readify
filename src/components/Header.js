@@ -8,6 +8,8 @@ import sunIcon from '../images/sun.svg';
 import moonIcon from '../images/moon.svg';
 import { rhythm, scale } from '../utils/typography';
 
+/* eslint-disable */
+
 const StickyHeader = styled.header`
   position: fixed;
   top: 0;

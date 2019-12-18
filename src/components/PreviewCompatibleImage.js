@@ -5,23 +5,20 @@ import PropTypes from 'prop-types';
 const PreviewCompatibleImage = ({ src, alt, style, ...props }) => {
   const altTemplate = !!alt ? alt : '';
 
-  if (!!src) {
-    if (typeof src === 'string') {
-      return (
-        <img src={src} alt={altTemplate} style={{ width: '100%', ...style }} />
-      );
+  if (!!src && typeof src === 'string') {
+    return (
+      <img src={src} alt={altTemplate} style={{ width: '100%', ...style }} />
+    );
+  }
+
+  if (!!src && !!src.childImageSharp) {
+    const { fluid, fixed } = src.childImageSharp;
+    if (!!fluid) {
+      return <Image fluid={fluid} alt={altTemplate} style={style} {...props} />;
     }
 
-    if (!!src.fluid) {
-      return (
-        <Image fluid={src.fluid} alt={altTemplate} style={style} {...props} />
-      );
-    }
-
-    if (!!src.fixed) {
-      return (
-        <Image fixed={src.fixed} alt={altTemplate} style={style} {...props} />
-      );
+    if (!!fixed) {
+      return <Image fixed={fixed} alt={altTemplate} style={style} {...props} />;
     }
   }
 

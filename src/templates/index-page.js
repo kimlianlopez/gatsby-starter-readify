@@ -20,14 +20,7 @@ const IndexPageTemplate = ({ inEditor, content }) => {
             </Col>
             <Col md="1" />
             <Col xs="12" md="2">
-              <PreviewCompatibleImage
-                src={
-                  !!inEditor
-                    ? content.siteLogo
-                    : content.siteLogo.childImageSharp
-                }
-                alt="asd"
-              />
+              <PreviewCompatibleImage src={content.heroImage} alt="asd" />
             </Col>
           </Row>
           <Row className="mb-3" noGutters>
@@ -60,7 +53,7 @@ IndexPageTemplate.propTypes = {
   content: PropTypes.shape({
     heroTitle: PropTypes.string,
     description: PropTypes.string,
-    siteLogo: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    heroImage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     themeButtonsTitle: PropTypes.string,
     primaryButtonText: PropTypes.string,
     secondaryButtonText: PropTypes.string

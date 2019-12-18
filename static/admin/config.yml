@@ -1,0 +1,41 @@
+backend:
+  name: git-gateway
+  branch: master
+  commit_messages:
+    update: 'Update {{collection}} “{{slug}}”'
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Index Page"
+        name: "index"
+        file: "src/content/index-page.md"
+        fields:
+          - label: "Page Key"
+            name: "pageKey"
+            widget: "hidden"
+            default: "index-page"
+          - label: "Hero Title"
+            name: "heroTitle"
+            widget: "string"
+          - label: "Hero Image"
+            name: "heroImage"
+            widget: "image"
+          - label: "Description"
+            name: "description"
+            widget: "text"
+          - label: "Theme Buttons Title"
+            name: "themeButtonsTitle"
+            widget: "string"
+          - label: "Primary Button Text"
+            name: "primaryButtonText"
+            widget: "string"
+          - label: "Secondary Button Text"
+            name: "secondaryButtonText"
+            widget: "string"
+
+          

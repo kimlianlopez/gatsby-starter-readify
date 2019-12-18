@@ -25,7 +25,7 @@ export const pageQuery = graphql`
         themeButtonsTitle
         primaryButtonText
         secondaryButtonText
-        siteLogo {
+        heroImage {
           childImageSharp {
             fluid(quality: 100, maxWidth: 1920) {
               ...GatsbyImageSharpFluid
