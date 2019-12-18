@@ -2,7 +2,7 @@
   "name": "gatsby-starter-readify",
   "version": "0.1.0",
   "description": "A gatsby advance starter with advance SEO, Theming, and Netlify-CMS.",
-  "author": "Kim Lian Lopez <klianlopez@gmail.com>",
+  "author": "Kim Lian Lopez <kimlian.dev@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
