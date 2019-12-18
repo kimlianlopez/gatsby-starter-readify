@@ -9,7 +9,8 @@ const config = {
   siteAuthor: 'Kim Lian Lopez',
   siteDeveloper: 'Kim Lian Lopez',
   pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-  siteDescription: 'An Gatsby advance starter with SEO and Netlify CMS', // Website description used for RSS feeds/meta description tag.
+  siteDescription:
+    'A gatsby advance starter with advance SEO, Theming, and Netlify-CMS', // Website description used for RSS feeds/meta description tag.
   googleAnalyticsID: 'UA-153588035-1', // GA tracking ID.
   // dateFromFormat: 'YYYY-MM-DD', // Date format used in the frontmatter.
   // dateFormat: 'DD/MM/YYYY', // Date format for display.

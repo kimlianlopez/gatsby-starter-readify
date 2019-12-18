@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-seo-netlify-cms",
+  "name": "gatsby-starter-readify",
   "version": "0.1.0",
-  "description": "A gatsby starter",
-  "author": "Kim Lian Lopez",
-  "license": "ISC",
+  "description": "A gatsby advance starter with advance SEO, Theming, and Netlify-CMS.",
+  "author": "Kim Lian Lopez <klianlopez@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
     "bootstrap": "^4.4.1",
@@ -44,6 +44,12 @@
     "env-cmd": "^10.0.1",
     "prettier": "^1.19.1"
   },
+  "keywords": [
+    "gatsby-starter",
+    "gatsby-starter-readify",
+    "gatsby advance starter",
+    "gatsby starter with advance SEO, Theming and Netlify-CMS"
+  ],
   "scripts": {
     "clean": "gatsby clean",
     "build": "gatsby build",
@@ -51,5 +57,9 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimlianlopez/gatsby-starter-readify"
   }
 }
