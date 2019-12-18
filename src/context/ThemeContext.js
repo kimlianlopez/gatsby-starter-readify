@@ -4,7 +4,7 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import getTheme from '../themes/getTheme';
 
 const defaultTheme = {
-  name: 'Deep Blue',
+  name: 'Minimalist',
   darkMode: true
 };
 
