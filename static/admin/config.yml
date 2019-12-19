@@ -13,7 +13,7 @@ collections:
     files:
       - label: "Index Page"
         name: "index"
-        file: "src/content/index-page.md"
+        file: "content/index-page.md"
         fields:
           - label: "Page Key"
             name: "pageKey"
