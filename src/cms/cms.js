@@ -2,7 +2,6 @@ import CMS from 'netlify-cms-app';
 import React, { useState, useEffect } from 'react';
 import { StyleSheetManager } from 'styled-components';
 import { TypographyStyle } from 'react-typography';
-import { Helmet } from 'react-helmet';
 
 import typography from '../utils/typography';
 import { ThemeProvider } from '../context/ThemeContext';
@@ -23,12 +22,7 @@ const CSSInjector = ({ children }) => {
   return (
     <div>
       {iframeRef && (
-        <StyleSheetManager target={iframeRef}>
-          <Helmet>
-            <TypographyStyle typography={typography} />
-          </Helmet>
-          {children}
-        </StyleSheetManager>
+        <StyleSheetManager target={iframeRef}>{children}</StyleSheetManager>
       )}
     </div>
   );
@@ -36,6 +30,7 @@ const CSSInjector = ({ children }) => {
 
 CMS.registerPreviewTemplate('index', props => (
   <ThemeProvider>
+    <TypographyStyle typography={typography} />
     <CSSInjector>
       <IndexPagePreview {...props} />
     </CSSInjector>
