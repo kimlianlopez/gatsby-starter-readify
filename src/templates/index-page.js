@@ -14,17 +14,20 @@ const IndexPageTemplate = ({ inEditor, content }) => {
       <SectionContainer id="hero-section">
         <Container>
           <Row className="mb-3" noGutters>
-            <Col xs="12" md="8" className="d-flex flex-column">
+            <Col
+              xs="12"
+              md="9"
+              lg="10"
+              className="d-flex flex-column pr-md-5 pr-0 order-2 order-md-1">
               <h1>{content.heroTitle}</h1>
               <p>{content.description}</p>
             </Col>
-            <Col md="1" />
-            <Col xs="12" md="2">
+            <Col xs="5" sm="4" md="3" lg="2" className="order-1 order-md-2">
               <PreviewCompatibleImage src={content.heroImage} alt="asd" />
             </Col>
           </Row>
           <Row className="mb-3" noGutters>
-            <Col xs="12" md="4">
+            <Col xs="12" md="6" lg="4">
               <h3>{content.themeButtonsTitle}</h3>
               <Button variant="primary" className="mr-3">
                 {content.primaryButtonText}
@@ -33,7 +36,8 @@ const IndexPageTemplate = ({ inEditor, content }) => {
             </Col>
             <Col
               xs="12"
-              md="8"
+              md="6"
+              lg="8"
               className="d-flex flex-column justify-content-start">
               <ColorThemeSelector />
             </Col>

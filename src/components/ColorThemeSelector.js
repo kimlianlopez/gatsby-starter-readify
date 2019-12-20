@@ -12,7 +12,7 @@ const ColorThemeSelector = () => {
   return (
     <Form.Group controlId="exampleForm.ControlSelect1">
       <Row noGutters>
-        <Col xs="12" md="4">
+        <Col xs="12" lg="6">
           <h3>Color Theme:</h3>
           <Form.Control
             title="Choose Color Theme"

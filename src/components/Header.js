@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { Container } from 'react-bootstrap';
+import { Container, Col } from 'react-bootstrap';
 import { ThemeContext } from 'styled-components';
 
 import sunIcon from '../images/sun.svg';
@@ -19,13 +19,26 @@ const StickyHeader = styled.header`
   box-shadow: ${props =>
     props.isOnTop ? 'none' : '0 4px 5px -2px rgba(0, 0, 0, 0.15)'};
   background-color: ${props => props.theme.color.background};
+
+  @media (min-width: 992px) {
+    height: ${props => props.theme.spacing.offsetTopLg};
+  }
 `;
 
 const Navbar = styled.nav`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+`;
+
+const NavCol = styled(Col)`
+  display: flex;
   align-items: center;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 `;
 
 const ModeToggler = styled.button`
@@ -35,7 +48,7 @@ const ModeToggler = styled.button`
   text-transform: capitalize;
   display: flex;
   align-items: center;
-  margin-left: auto;
+  /* margin-left: auto; */
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -57,8 +70,16 @@ const ModeIcon = styled.img`
   }
 `;
 
+const ModeText = styled.span`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 const HeaderTitle = styled(Link)`
   margin-right: ${rhythm(1)};
+  font-size: ${scale(0.5).fontSize};
+  line-height: ${scale(0).lineHeight};
   margin-top: 0;
   margin-bottom: 0;
 
@@ -67,6 +88,10 @@ const HeaderTitle = styled(Link)`
 
     &:hover {
       text-decoration: none;
+    }
+
+    @media (max-width: 576px) {
+      margin-right: 0;
     }
   }
 `;
@@ -113,24 +138,43 @@ const Header = () => {
     <StickyHeader ref={headerRef} isOnTop={headerPosition.isOnTop}>
       <Container style={{ height: '100%' }}>
         <Navbar className="px-0">
-          <HeaderTitle to="/" id="siteTitle" style={scale(0.5)}>
-            <strong>Gatsby Starter Readify</strong>
-          </HeaderTitle>
-          <Nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/blog">Blog</NavLink>
-          </Nav>
-          <ModeToggler
-            onClick={() => setDarkMode(!darkMode)}
-            title={`Toggle Dark Mode`}>
-            {`${nextModeName} Mode`}
-            {
-              <ModeIcon
-                src={nextModeName === 'Dark' ? moonIcon : sunIcon}
-                alt={`${modeName} Mode`}
-              />
-            }
-          </ModeToggler>
+          {/* Nav Title */}
+          <NavCol
+            xs="9"
+            md="9"
+            className="align-items-start justify-content-center justify-content-md-start align-items-md-center flex-column flex-md-row">
+            <HeaderTitle to="/" id="siteTitle">
+              <strong>Gatsby Readify</strong>
+            </HeaderTitle>
+            <Nav className="order-2 order-sm-1">
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/blog">Blog</NavLink>
+            </Nav>
+          </NavCol>
+          {/* Nav Mode Toggler */}
+          <NavCol
+            xs="3"
+            md="3"
+            className="align-items-center justify-content-end">
+            <ModeToggler
+              onClick={() => setDarkMode(!darkMode)}
+              title={`Toggle Dark Mode`}>
+              <ModeText>{`${nextModeName} Mode`}</ModeText>
+              {
+                <ModeIcon
+                  src={nextModeName === 'Dark' ? moonIcon : sunIcon}
+                  alt={`${modeName} Mode`}
+                />
+              }
+            </ModeToggler>
+          </NavCol>
+          {/* Nav Main */}
+          {/* <NavCol xs="12" lg="6" className="order-lg-1 align-items-lg-center">
+            <Nav className="order-2 order-sm-1">
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/blog">Blog</NavLink>
+            </Nav>
+          </NavCol> */}
         </Navbar>
       </Container>
     </StickyHeader>

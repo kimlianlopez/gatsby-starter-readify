@@ -12,6 +12,10 @@ const MainWrapper = styled.main`
     !!props.inEditor ? 0 : props.theme.spacing.offsetTop};
   background-color: ${props => props.theme.color.background};
   flex-grow: 1;
+
+  @media (min-width: 992px) {
+    margin-top: ${props => props.theme.spacing.offsetTopLg};
+  }
 `;
 
 const SiteWrapper = styled.div`
