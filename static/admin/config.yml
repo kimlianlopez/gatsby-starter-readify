@@ -37,5 +37,19 @@ collections:
           - label: "Secondary Button Text"
             name: "secondaryButtonText"
             widget: "string"
+  - name: blog
+    label: "Post"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "select", options: ["Kim Lian A. Lopez"], default: ["Kim Lian A. Lopez"] }
+      - { label: "Cover Image", name: "cover", widget: "image" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
           

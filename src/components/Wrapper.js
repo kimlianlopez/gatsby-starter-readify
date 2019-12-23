@@ -10,10 +10,12 @@ import '../styles/bootstrap-forms.css';
 const MainWrapper = styled.main`
   margin-top: ${props =>
     !!props.inEditor ? 0 : props.theme.spacing.offsetTop};
+  padding-bottom: ${props =>
+    !!props.inEditor ? 0 : props.theme.spacing.offsetTop};
   background-color: ${props => props.theme.color.background};
   flex-grow: 1;
 
-  @media (min-width: 992px) {
+  @media (min-width: 576px) {
     margin-top: ${props => props.theme.spacing.offsetTopLg};
   }
 `;
