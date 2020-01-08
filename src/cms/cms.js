@@ -6,6 +6,7 @@ import { TypographyStyle } from 'react-typography';
 import typography from '../utils/typography';
 import { ThemeProvider } from '../context/ThemeContext';
 import IndexPagePreview from './preview-templates/IndexPagePreview';
+import BlogPostPreview from './preview-templates/BlogPostPreview';
 // import FooterComponentPreview from './preview-templates/FooterComponentPreview';
 
 // import BootstrapLoader from './utils/BootstrapLoader';
@@ -33,6 +34,15 @@ CMS.registerPreviewTemplate('index', props => (
     <TypographyStyle typography={typography} />
     <CSSInjector>
       <IndexPagePreview {...props} />
+    </CSSInjector>
+  </ThemeProvider>
+));
+
+CMS.registerPreviewTemplate('blog', props => (
+  <ThemeProvider>
+    <TypographyStyle typography={typography} />
+    <CSSInjector>
+      <BlogPostPreview {...props} />
     </CSSInjector>
   </ThemeProvider>
 ));

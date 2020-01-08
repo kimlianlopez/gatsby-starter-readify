@@ -43,13 +43,15 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Title", name: "title", widget: "string", default: "Blog Title" }
+      - { label: "Description", name: "description", widget: "text", default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Author", name: "author", widget: "select", options: ["Kim Lian A. Lopez"], default: ["Kim Lian A. Lopez"] }
-      - { label: "Cover Image", name: "cover", widget: "image" }
+      - { label: "Cover Image", name: "cover", widget: "image", default: "/img/small-plant-in-table.jpg" }
+      - { label: "Cover Image Alt", name: "coverImageAlt", widget: "string", default: "Small plant in table" }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Category", name: "category", widget: "string" }
-      - { label: "Tags", name: "tags", widget: "list" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Category", name: "category", widget: "string", default: "tech" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["tech"] }
+      - { label: "Body", name: "body", widget: "markdown", default: "Blog content here..." }
 
           

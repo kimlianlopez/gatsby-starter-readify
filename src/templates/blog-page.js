@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -29,19 +30,40 @@ const PostWrapper = styled(Link)`
   }
 `;
 
-const BlogPageTemplate = ({ blogPosts }) => {
-  console.log(blogPosts);
+const BlogTitle = styled.h3`
+  color: ${props => props.theme.color.primary} !important;
+`;
+
+const InfoText = styled.span`
+  color: ${props => props.theme.color.secondary};
+`;
+
+const blogFilterInfo = ({ tag, category }) => {
+  if (!tag && !category) {
+    return null;
+  }
+
+  return (
+    <h3>
+      {`${!!tag ? 'Tags' : 'Categories'}: `}
+      <InfoText>{tag || category}</InfoText>
+    </h3>
+  );
+};
+
+const BlogPageTemplate = ({ blogPosts, tag, category }) => {
   return (
     <Wrapper>
       <SectionContainer id="blog-hero-section">
         <Container>
           <h1 className="mb-3">Gatsby Readify Blog</h1>
-          {blogPosts.map(post => (
-            <Row noGutters>
+          {blogFilterInfo({ tag, category })}
+          {blogPosts.map((post, i) => (
+            <Row key={i} noGutters>
               <Col xs="12" lg="7">
                 <PostWrapper to={`/blog${post.node.fields.slug}`}>
                   <div className="post-inner-wrapper">
-                    <h3>{post.node.frontmatter.title}</h3>
+                    <BlogTitle>{post.node.frontmatter.title}</BlogTitle>
                     <p className="mb-3">{post.node.excerpt}</p>
                     <p>{post.node.frontmatter.author}</p>
                     <p>
@@ -57,6 +79,17 @@ const BlogPageTemplate = ({ blogPosts }) => {
       </SectionContainer>
     </Wrapper>
   );
+};
+
+BlogPageTemplate.defaultProps = {
+  tag: '',
+  category: ''
+};
+
+BlogPageTemplate.propTypes = {
+  blogPosts: PropTypes.array.isRequired,
+  tag: PropTypes.string,
+  category: PropTypes.string
 };
 
 export default BlogPageTemplate;

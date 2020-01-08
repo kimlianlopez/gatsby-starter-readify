@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -27,7 +26,10 @@ const SiteWrapper = styled.div`
 
   h1,
   h2,
-  h3 {
+  h3,
+  h4,
+  h5,
+  h6 {
     color: ${props => props.theme.color.headerText};
   }
 
@@ -55,15 +57,7 @@ const SiteWrapper = styled.div`
   }
 `;
 
-const Wrapper = ({ children, inEditor }) => {
-  if (!!inEditor) {
-    return (
-      <SiteWrapper id="__siteWrapper" inEditor={true}>
-        <MainWrapper>{children}</MainWrapper>
-      </SiteWrapper>
-    );
-  }
-
+const Wrapper = ({ children }) => {
   return (
     <SiteWrapper id="__siteWrapper" inEditor={false}>
       <Header />
@@ -71,10 +65,6 @@ const Wrapper = ({ children, inEditor }) => {
       <Footer />
     </SiteWrapper>
   );
-};
-
-Wrapper.propTypes = {
-  inEditor: PropTypes.bool
 };
 
 export default Wrapper;

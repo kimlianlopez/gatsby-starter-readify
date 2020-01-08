@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { Container, Col } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 import { ThemeContext } from 'styled-components';
 
+import ColorThemeSelector from './ColorThemeSelector';
 import sunIcon from '../images/sun.svg';
 import moonIcon from '../images/moon.svg';
 import { rhythm, scale } from '../utils/typography';
@@ -48,7 +49,7 @@ const ModeToggler = styled.button`
   text-transform: capitalize;
   display: flex;
   align-items: center;
-  /* margin-left: auto; */
+  margin-left: 1rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -71,7 +72,7 @@ const ModeIcon = styled.img`
 `;
 
 const ModeText = styled.span`
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     display: none;
   }
 `;
@@ -106,6 +107,10 @@ const NavLink = styled(Link)`
   margin-right: ${rhythm(1 / 2)};
 `;
 
+const FormLabel = styled.label`
+  color: ${props => props.theme.color.text};
+`;
+
 const initialState = {
   isOnTop: true
 };
@@ -138,14 +143,15 @@ const Header = () => {
     <StickyHeader ref={headerRef} isOnTop={headerPosition.isOnTop}>
       <Container style={{ height: '100%' }}>
         <Navbar className="px-0">
-          {/* Nav Title */}
           <NavCol
             xs="9"
-            md="9"
+            sm="6"
             className="align-items-start justify-content-center justify-content-md-start align-items-md-center flex-column flex-md-row">
+            {/* Nav Title */}
             <HeaderTitle to="/" id="siteTitle">
               <strong>Gatsby Readify</strong>
             </HeaderTitle>
+            {/* Nav Main */}
             <Nav className="order-2 order-sm-1">
               <NavLink to="/">Home</NavLink>
               <NavLink to="/blog">Blog</NavLink>
@@ -154,8 +160,14 @@ const Header = () => {
           {/* Nav Mode Toggler */}
           <NavCol
             xs="3"
-            md="3"
+            sm="6"
             className="align-items-center justify-content-end">
+            <Row className="d-none d-sm-flex align-items-center" noGutters>
+              <FormLabel className="mr-lg-3 d-lg-block d-none">
+                Color Theme
+              </FormLabel>
+              <ColorThemeSelector controlId="headerColorThemeSelector" />
+            </Row>
             <ModeToggler
               onClick={() => setDarkMode(!darkMode)}
               title={`Toggle Dark Mode`}>
@@ -168,13 +180,6 @@ const Header = () => {
               }
             </ModeToggler>
           </NavCol>
-          {/* Nav Main */}
-          {/* <NavCol xs="12" lg="6" className="order-lg-1 align-items-lg-center">
-            <Nav className="order-2 order-sm-1">
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/blog">Blog</NavLink>
-            </Nav>
-          </NavCol> */}
         </Navbar>
       </Container>
     </StickyHeader>

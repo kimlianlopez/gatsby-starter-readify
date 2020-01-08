@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { SectionContainer } from '../components/Containers';
-import ColorThemeSelector from '../components/ColorThemeSelector';
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 import Button from '../components/Button';
 import Wrapper from '../components/Wrapper';
 
 const IndexPageTemplate = ({ inEditor, content }) => {
   return (
-    <Wrapper inEditor={inEditor}>
+    <Wrapper>
       <SectionContainer id="hero-section">
         <Container>
           <Row className="mb-3" noGutters>
@@ -38,9 +37,7 @@ const IndexPageTemplate = ({ inEditor, content }) => {
               xs="12"
               md="6"
               lg="8"
-              className="d-flex flex-column justify-content-start">
-              <ColorThemeSelector />
-            </Col>
+              className="d-flex flex-column justify-content-start"></Col>
           </Row>
         </Container>
       </SectionContainer>
