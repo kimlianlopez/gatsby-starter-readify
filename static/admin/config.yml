@@ -49,7 +49,7 @@ collections:
       - { label: "Author", name: "author", widget: "select", options: ["Kim Lian A. Lopez"], default: ["Kim Lian A. Lopez"] }
       - { label: "Cover Image", name: "cover", widget: "image", default: "/img/small-plant-in-table.jpg" }
       - { label: "Cover Image Alt", name: "coverImageAlt", widget: "string", default: "Small plant in table" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", required: false }
       - { label: "Category", name: "category", widget: "string", default: "tech" }
       - { label: "Tags", name: "tags", widget: "list", default: ["tech"] }
       - { label: "Body", name: "body", widget: "markdown", default: "Blog content here..." }
