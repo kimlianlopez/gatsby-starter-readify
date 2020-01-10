@@ -60,9 +60,9 @@ collections:
             collection: "blogPost"
             default: "list"
             multiple: true
-            searchFields: ["title"]
+            searchFields: ["title", "description"]
             valueField: "title"
-            displayFields: ["title"]
+            displayFields: ["title", "description"]
   - name: "blogPost"
     label: "Blog Post"
     folder: "content/blog"
