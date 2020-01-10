@@ -94,9 +94,6 @@ exports.createPages = async ({ graphql, actions }) => {
     return 0;
   });
 
-  // const { postsPerPage } = siteConfig;
-  // const pageCount = Math.ceil(postsEdges.length / postsPerPage);
-
   // Post page creating
   allPosts.forEach((post, i) => {
     // Generate a list of tags

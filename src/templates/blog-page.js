@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
+import { chunk } from 'lodash';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import styled from 'styled-components';
@@ -8,6 +9,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { rhythm } from '../utils/typography';
 import { SectionContainer } from '../components/Containers';
 import Wrapper from '../components/Wrapper';
+import Pagination from '../components/Pagination';
 
 const PostWrapper = styled(Link)`
   &:hover {
@@ -52,13 +54,17 @@ const blogFilterInfo = ({ tag, category }) => {
 };
 
 const BlogPageTemplate = ({ blogPosts, tag, category }) => {
+  const [currentPage, setPage] = useState(0);
+  const postPerPage = 3;
+  const chunkedBlogPosts = chunk(blogPosts, postPerPage);
+
   return (
     <Wrapper>
       <SectionContainer id="blog-hero-section">
         <Container>
           <h1 className="mb-3">Gatsby Readify Blog</h1>
           {blogFilterInfo({ tag, category })}
-          {blogPosts.map((post, i) => (
+          {chunkedBlogPosts[currentPage].map((post, i) => (
             <Row key={i} noGutters>
               <Col xs="12" lg="7">
                 <PostWrapper to={`/blog${post.node.fields.slug}`}>
@@ -75,6 +81,11 @@ const BlogPageTemplate = ({ blogPosts, tag, category }) => {
               </Col>
             </Row>
           ))}
+          <Pagination
+            setPage={setPage}
+            currentPage={currentPage}
+            pageCount={chunkedBlogPosts.length}
+          />
         </Container>
       </SectionContainer>
     </Wrapper>

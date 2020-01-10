@@ -7,6 +7,7 @@ import typography from '../utils/typography';
 import { ThemeProvider } from '../context/ThemeContext';
 import IndexPagePreview from './preview-templates/IndexPagePreview';
 import BlogPostPreview from './preview-templates/BlogPostPreview';
+import BlogPagePreview from './preview-templates/BlogPagePreview';
 // import FooterComponentPreview from './preview-templates/FooterComponentPreview';
 
 // import BootstrapLoader from './utils/BootstrapLoader';
@@ -38,11 +39,20 @@ CMS.registerPreviewTemplate('index', props => (
   </ThemeProvider>
 ));
 
-CMS.registerPreviewTemplate('blog', props => (
+CMS.registerPreviewTemplate('blogPost', props => (
   <ThemeProvider>
     <TypographyStyle typography={typography} />
     <CSSInjector>
       <BlogPostPreview {...props} />
+    </CSSInjector>
+  </ThemeProvider>
+));
+
+CMS.registerPreviewTemplate('blogPage', props => (
+  <ThemeProvider>
+    <TypographyStyle typography={typography} />
+    <CSSInjector>
+      <BlogPagePreview {...props} />
     </CSSInjector>
   </ThemeProvider>
 ));
