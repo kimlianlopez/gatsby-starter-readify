@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: test-repo
   branch: master
   commit_messages:
     update: 'Update {{collection}} “{{slug}}”'
@@ -54,15 +54,6 @@ collections:
             default: 5
             min: 1
             max: 10
-          - label: "All Blog Post"
-            name: "allBlogPost"
-            widget: "relation"
-            collection: "blogPost"
-            default: "list"
-            multiple: true
-            searchFields: ["title", "description"]
-            valueField: "title"
-            displayFields: ["title", "description"]
   - name: "blogPost"
     label: "Blog Post"
     folder: "content/blog"
