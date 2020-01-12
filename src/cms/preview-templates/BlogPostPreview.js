@@ -14,7 +14,6 @@ const BlogPostPreview = ({ entry, widgetFor }) => {
         tags={data.tags}
         category={data.category}
         date={data.date}
-        author={data.author}
         cover={data.cover}
         coverImageAlt={data.coverImageAlt}
         html={widgetFor('body')}

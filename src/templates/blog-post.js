@@ -7,6 +7,7 @@ import { graphql, Link } from 'gatsby';
 import { kebabCase } from 'lodash';
 import { Row, Col } from 'react-bootstrap';
 
+import { blogAuthorName } from '../../data/siteConfig';
 import SEO from '../components/SEO';
 import { SectionContainer } from '../components/Containers';
 import PreviewCompatibleContent from '../components/PreviewCompatibleContent';
@@ -49,13 +50,11 @@ export const BlogPostTemplate = ({
   tags,
   category,
   date,
-  author,
   cover,
   coverImageAlt,
   html,
   inEditor
 }) => {
-  console.log(date);
   return (
     <Wrapper inEditor={inEditor}>
       <SectionContainer id="blog-hero-section">
@@ -64,7 +63,7 @@ export const BlogPostTemplate = ({
           <p>{description}</p>
           <BlogPostInfo className="mb-5">
             <p className="mb-0">
-              <b>{author}</b>
+              <b>{blogAuthorName}</b>
             </p>
             <p className="smaller mt-0">
               {moment(date).format('ll')} •{' '}
@@ -111,7 +110,6 @@ BlogPostTemplate.propTypes = {
   timeToRead: PropTypes.string,
   category: PropTypes.string,
   date: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  author: PropTypes.string,
   cover: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   coverImageAlt: PropTypes.string,
   html: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
@@ -131,7 +129,6 @@ const BlogPost = ({ data, path }) => {
         tags={post.tags}
         category={post.category}
         date={post.date}
-        author={post.author}
         cover={post.cover}
         coverImageAlt={post.coverImageAlt}
         html={data.markdownRemark.html}
@@ -169,7 +166,6 @@ export const pageQuery = graphql`
         coverImageAlt
         category
         tags
-        author
       }
       fields {
         slug

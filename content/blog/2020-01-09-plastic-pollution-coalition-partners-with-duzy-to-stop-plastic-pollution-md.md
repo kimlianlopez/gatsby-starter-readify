@@ -5,7 +5,6 @@ description: >
   to re-release ‘Open Your Eyes,’ a PSA on the problem of plastic pollution,
   narrated by actor and activist Jeff Bridges.
 date: 2020-01-09T01:56:37.270Z
-author: Kim Lian A. Lopez
 cover: /img/small-plant-in-table.jpg
 coverImageAlt: Small plant in table
 category: environmental

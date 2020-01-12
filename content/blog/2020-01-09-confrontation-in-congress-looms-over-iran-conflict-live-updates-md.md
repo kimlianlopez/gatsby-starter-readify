@@ -4,7 +4,6 @@ description: >-
   Both President Trump and Iranian leaders signaled their willingness to end
   hostilities.
 date: 2020-01-09T01:52:14.927Z
-author: Kim Lian A. Lopez
 cover: /img/speaker-nancy-pelosi.jpg
 coverImageAlt: Speaker Nancy Pelosi before a closed briefing on Iran on Wednesday.
 category: political

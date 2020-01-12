@@ -6,6 +6,7 @@ import moment from 'moment';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 
+import { postsPerPage, blogAuthorName } from '../../data/siteConfig';
 import { rhythm } from '../utils/typography';
 import { SectionContainer } from '../components/Containers';
 import Wrapper from '../components/Wrapper';
@@ -55,8 +56,7 @@ const blogFilterInfo = ({ tag, category }) => {
 
 const BlogPageTemplate = ({ blogPosts, tag, category }) => {
   const [currentPage, setPage] = useState(0);
-  const postPerPage = 3;
-  const chunkedBlogPosts = chunk(blogPosts, postPerPage);
+  const chunkedBlogPosts = chunk(blogPosts, postsPerPage);
 
   return (
     <Wrapper>
@@ -71,7 +71,7 @@ const BlogPageTemplate = ({ blogPosts, tag, category }) => {
                   <div className="post-inner-wrapper">
                     <BlogTitle>{post.node.frontmatter.title}</BlogTitle>
                     <p className="mb-3">{post.node.excerpt}</p>
-                    <p>{post.node.frontmatter.author}</p>
+                    <p>{blogAuthorName}</p>
                     <p>
                       {moment(post.node.frontmatter.date).format('ll')} •{' '}
                       {`${post.node.timeToRead} min read`}
