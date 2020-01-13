@@ -10,7 +10,10 @@ const BlogPage = props => {
   return (
     <>
       <SEO title="Blog" path={path} />
-      <BlogPageTemplate blogPosts={data.allMarkdownRemark.edges} />
+      <BlogPageTemplate
+        blogPosts={data.allMarkdownRemark.edges}
+        blogSettings={data.site.siteMetadata}
+      />
     </>
   );
 };
@@ -32,6 +35,13 @@ export const pageQuery = graphql`
             date
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        blogAuthorAvatar
+        blogAuthorName
+        postsPerPage
       }
     }
   }

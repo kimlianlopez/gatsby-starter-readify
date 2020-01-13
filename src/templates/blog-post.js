@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 import { graphql, Link } from 'gatsby';
 import { kebabCase } from 'lodash';
 import { Row, Col } from 'react-bootstrap';
 
-import { blogAuthorName } from '../../data/siteConfig';
+import BlogInfoContainer from '../components/BlogInfoContainer';
 import SEO from '../components/SEO';
 import { SectionContainer } from '../components/Containers';
 import PreviewCompatibleContent from '../components/PreviewCompatibleContent';
@@ -21,16 +20,15 @@ const TagLink = styled(Link)`
   border: 1px solid ${props => props.theme.color.linkText};
 `;
 
-const BlogPostInfo = styled.div`
-  display: flex;
-  flex-direction: column;
+const CoverImage = styled.div`
+  width: 100%;
 
-  .smaller {
-    font-size: 0.7rem;
+  @media (min-width: 768px) {
+    width: 70%;
   }
 `;
 
-const BlogPostInfoContainer = ({ title, children }) => {
+const BlogTagsAndCategory = ({ title, children }) => {
   return (
     <Row className="mb-3" noGutters>
       <Col xs="12">
@@ -53,47 +51,41 @@ export const BlogPostTemplate = ({
   cover,
   coverImageAlt,
   html,
-  inEditor
+  inEditor,
+  blogSettings
 }) => {
   return (
     <Wrapper inEditor={inEditor}>
       <SectionContainer id="blog-hero-section">
         <Container>
           <h1>{title}</h1>
-          <p>{description}</p>
-          <BlogPostInfo className="mb-5">
-            <p className="mb-0">
-              <b>{blogAuthorName}</b>
-            </p>
-            <p className="smaller mt-0">
-              {moment(date).format('ll')} •{' '}
-              {`${!!timeToRead ? timeToRead : '0'} min read`}
-            </p>
-          </BlogPostInfo>
-          <div style={{ width: '50%' }}>
-            <PreviewCompatibleImage
-              className="mb-5"
-              src={cover}
-              alt={coverImageAlt}
-            />
-          </div>
+          <p className="mb-3">{description}</p>
+          <BlogInfoContainer
+            className="mb-5"
+            blogSettings={blogSettings}
+            date={date}
+            timeToRead={!!timeToRead ? timeToRead : '0'}
+          />
+          <CoverImage className="mb-5">
+            <PreviewCompatibleImage src={cover} alt={coverImageAlt} />
+          </CoverImage>
           <PreviewCompatibleContent
             className="mb-5"
             inEditor={inEditor}
             content={html}
           />
-          <BlogPostInfoContainer title="Tags">
+          <BlogTagsAndCategory title="Tags">
             {tags.map(tag => (
               <TagLink key={tag} to={`/blog/tags/${kebabCase(tag)}`}>
                 {tag}
               </TagLink>
             ))}
-          </BlogPostInfoContainer>
-          <BlogPostInfoContainer title="Category">
+          </BlogTagsAndCategory>
+          <BlogTagsAndCategory title="Category">
             <TagLink to={`/blog/categories/${kebabCase(category)}`}>
               {category}
             </TagLink>
-          </BlogPostInfoContainer>
+          </BlogTagsAndCategory>
         </Container>
       </SectionContainer>
     </Wrapper>
@@ -107,31 +99,48 @@ BlogPostTemplate.defaultProps = {
 BlogPostTemplate.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  timeToRead: PropTypes.string,
+  timeToRead: PropTypes.number,
   category: PropTypes.string,
   date: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   cover: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   coverImageAlt: PropTypes.string,
   html: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  inEditor: PropTypes.bool
+  inEditor: PropTypes.bool,
+  blogSettings: PropTypes.object
 };
 
 const BlogPost = ({ data, path }) => {
-  const { frontmatter: post } = data.markdownRemark;
+  const { markdownRemark: post, site } = data;
+  const {
+    title,
+    cover,
+    description,
+    tags,
+    category,
+    date,
+    coverImageAlt
+  } = post.frontmatter;
 
   return (
     <>
-      <SEO title={post.title} path={path} />
+      <SEO
+        title={title}
+        path={path}
+        image={cover.childImageSharp.original.src}
+        description={description}
+        isBlogPost={true}
+      />
       <BlogPostTemplate
-        title={post.title}
-        timeToRead={data.markdownRemark.timeToRead}
-        description={post.description}
-        tags={post.tags}
-        category={post.category}
-        date={post.date}
-        cover={post.cover}
-        coverImageAlt={post.coverImageAlt}
-        html={data.markdownRemark.html}
+        title={title}
+        timeToRead={post.timeToRead}
+        description={description}
+        tags={tags}
+        category={category}
+        date={date}
+        cover={cover}
+        coverImageAlt={coverImageAlt}
+        html={post.html}
+        blogSettings={site.siteMetadata}
       />
     </>
   );
@@ -161,6 +170,9 @@ export const pageQuery = graphql`
             fluid(quality: 100, maxWidth: 1920) {
               ...GatsbyImageSharpFluid
             }
+            original {
+              src
+            }
           }
         }
         coverImageAlt
@@ -170,6 +182,12 @@ export const pageQuery = graphql`
       fields {
         slug
         date
+      }
+    }
+    site {
+      siteMetadata {
+        blogAuthorAvatar
+        blogAuthorName
       }
     }
   }

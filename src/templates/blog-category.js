@@ -9,9 +9,10 @@ const BlogCategoryTemplate = ({ data, pageContext, path }) => {
 
   return (
     <>
-      <SEO title={`Blog Category - ${category}`} path={path} />
+      <SEO title={`Post categorized as "${category}"`} path={path} />
       <BlogPageTemplate
         blogPosts={data.allMarkdownRemark.edges}
+        blogSettings={data.site.siteMetadata}
         category={category}
       />
     </>
@@ -38,10 +39,16 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            author
             date
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        blogAuthorAvatar
+        blogAuthorName
+        postsPerPage
       }
     }
   }

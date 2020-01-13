@@ -9,8 +9,12 @@ const BlogTagsTemplate = ({ data, pageContext, path }) => {
 
   return (
     <>
-      <SEO title={`Blog Tags - ${tag}`} path={path} />
-      <BlogPageTemplate blogPosts={data.allMarkdownRemark.edges} tag={tag} />
+      <SEO title={`Post tagged as "${tag}"`} path={path} />
+      <BlogPageTemplate
+        blogPosts={data.allMarkdownRemark.edges}
+        blogSettings={data.site.siteMetadata}
+        tag={tag}
+      />
     </>
   );
 };
@@ -35,10 +39,16 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            author
             date
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        blogAuthorAvatar
+        blogAuthorName
+        postsPerPage
       }
     }
   }

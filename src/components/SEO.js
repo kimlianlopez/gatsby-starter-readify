@@ -16,37 +16,80 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
           siteTitleAlt
           author
           developer
-          image
+          logo
           siteUrl
         }
       }
     }
   `);
 
-  const { pathPrefix, siteMetadata: siteMeta } = site;
-  const metaTitle = !!title ? `${title} | ${siteMeta.title}` : siteMeta.title;
-  const metaDescription = description || siteMeta.description;
-  const metaImage = image || siteMeta.image;
-  const completeSiteUrl = urljoin(siteMeta.siteUrl, pathPrefix, path);
+  const { pathPrefix, siteMetadata } = site;
+  // const metaTitle = !!title
+  //   ? `${title} | ${siteMetadata.title}`
+  //   : siteMetadata.title;
+  const metaTitle = title || siteMetadata.title;
+  const metaDescription = description || siteMetadata.description;
+  const metaImage = !!image
+    ? urljoin(siteMetadata.siteUrl, image)
+    : siteMetadata.logo;
+  const completePageUrl = urljoin(siteMetadata.siteUrl, pathPrefix, path);
+  const contentType = !!isBlogPost ? 'article' : 'website';
 
   const schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
       '@type': 'WebSite',
-      url: completeSiteUrl,
-      name: title,
-      alternateName: siteMeta.siteTitleAlt ? siteMeta.siteTitleAlt : '',
+      url: siteMetadata.siteUrl,
+      name: metaTitle,
+      alternateName: siteMetadata.siteTitleAlt ? siteMetadata.siteTitleAlt : '',
       author: {
         '@type': 'Person',
-        name: siteMeta.author
+        name: siteMetadata.author
       }
     }
   ];
 
+  if (isBlogPost) {
+    schemaOrgJSONLD.push(
+      {
+        '@context': 'http://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            item: {
+              '@id': completePageUrl,
+              name: title,
+              image: metaImage
+            }
+          }
+        ]
+      },
+      {
+        '@context': 'http://schema.org',
+        '@type': 'BlogPosting',
+        url: urljoin(siteMetadata.siteUrl, pathPrefix),
+        name: title,
+        alternateName: siteMetadata.siteTitleAlt
+          ? siteMetadata.siteTitleAlt
+          : '',
+        headline: title,
+        image: {
+          '@type': 'ImageObject',
+          url: metaImage
+        },
+        description: metaDescription
+      }
+    );
+  }
+
   return (
-    <Helmet>
+    <Helmet
+      defaultTitle={siteMetadata.title}
+      titleTemplate={`%s | ${siteMetadata.title}`}>
       {/* Title */}
-      <title>{metaTitle}</title>
+      <title>{title}</title>
 
       {/* General tags */}
       <meta
@@ -56,12 +99,12 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       <meta name="description" content={metaDescription} />
       <meta name="image" content={metaImage} />
       <meta name="lang" content={lang} />
-      <meta name="url" content={siteMeta.siteUrl} />
-      <meta name="author" content={siteMeta.author} />
-      <meta name="developer" content={siteMeta.developer} />
+      <meta name="url" content={completePageUrl} />
+      <meta name="author" content={siteMetadata.author} />
+      <meta name="developer" content={siteMetadata.developer} />
 
       {/* Site Canonical */}
-      <link rel="canonical" href={completeSiteUrl} />
+      <link rel="canonical" href={completePageUrl} />
 
       {/* Schema.org tags */}
       <script type="application/ld+json">
@@ -69,17 +112,13 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       </script>
 
       {/* OpenGraph tags */}
-      <meta property="og:url" content={siteMeta.siteUrl} />
-      {isBlogPost ? (
-        <meta property="og:type" content="article" />
-      ) : (
-        <meta property="og:type" content="website" />
-      )}
+      <meta property="og:url" content={completePageUrl} />
+      <meta property="og:type" content={contentType} />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={metaImage} />
       <meta property="og:locale" content={lang} />
-      <meta property="og:site_name" content={siteMeta.siteName} />
+      <meta property="og:site_name" content={siteMetadata.siteName} />
     </Helmet>
   );
 };

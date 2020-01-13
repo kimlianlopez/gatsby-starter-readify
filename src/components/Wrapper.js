@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Header from './Header';
 import Footer from './Footer';
+// import { scale } from '../utils/typography';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import '../styles/bootstrap-forms.css';
 
@@ -31,6 +32,9 @@ const SiteWrapper = styled.div`
   h5,
   h6 {
     color: ${props => props.theme.color.headerText};
+  }
+
+  @media screen {
   }
 
   p {

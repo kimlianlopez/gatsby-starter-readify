@@ -3,9 +3,8 @@ const config = {
   siteTitleShort: 'Gatsby Readify', // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: 'Gatsby Starter Readify', // Alternative site title for SEO.
   siteName: 'Gatsby Starter Readify',
-  siteLogo: '/img/logo-black.png', // Logo used for SEO and manifest.
+  siteLogo: '/img/gatsby-starter-readify-logo.png', // Logo used for SEO and manifest.
   siteUrl: 'https://gatsby-starter-readify.netlify.com', // Domain of your website without pathPrefix.
-  siteImage: 'img/about-section-profile.jpg',
   siteAuthor: 'Kim Lian Lopez',
   siteDeveloper: 'Kim Lian Lopez',
   pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
@@ -19,7 +18,7 @@ const config = {
   // userEmail: 'AdvancedUser@example.com', // Email used for RSS feed's author segment
   // userTwitter: '', // Optionally renders "Follow Me" in the UserInfo segment.
   // userLocation: 'North Pole, Earth', // User location to display in the author segment.
-  // userAvatar: 'https://api.adorable.io/avatars/150/test.png', // User avatar to display in the author segment.
+  blogAuthorAvatar: '/img/author-avatar.jpg', // User avatar to display in the author segment.
   // userDecription:
   // "Yeah, I like animals better than people sometimes... Especially dogs. Dogs are the best. Every time you come home, they act like they haven't seen you in a year. And the good thing about dogs... is they got different dogs for different people.", // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
@@ -50,8 +49,9 @@ const config = {
 // Make sure pathPrefix is empty if not needed
 if (config.pathPrefix === '/') {
   config.pathPrefix = '';
-} else {
+
   // Make sure pathPrefix only contains the first forward slash
+} else {
   config.pathPrefix = `/${config.pathPrefix.replace(/^\/|\/$/g, '')}`;
 }
 

@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { chunk } from 'lodash';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { postsPerPage, blogAuthorName } from '../../data/siteConfig';
+import BlogInfoContainer from '../components/BlogInfoContainer';
 import { rhythm } from '../utils/typography';
 import { SectionContainer } from '../components/Containers';
 import Wrapper from '../components/Wrapper';
@@ -41,7 +40,7 @@ const InfoText = styled.span`
   color: ${props => props.theme.color.secondary};
 `;
 
-const blogFilterInfo = ({ tag, category }) => {
+const blogFilterLabel = ({ tag, category }) => {
   if (!tag && !category) {
     return null;
   }
@@ -54,16 +53,16 @@ const blogFilterInfo = ({ tag, category }) => {
   );
 };
 
-const BlogPageTemplate = ({ blogPosts, tag, category }) => {
+const BlogPageTemplate = ({ blogPosts, blogSettings, tag, category }) => {
   const [currentPage, setPage] = useState(0);
-  const chunkedBlogPosts = chunk(blogPosts, postsPerPage);
+  const chunkedBlogPosts = chunk(blogPosts, blogSettings.postsPerPage);
 
   return (
     <Wrapper>
       <SectionContainer id="blog-hero-section">
         <Container>
           <h1 className="mb-3">Gatsby Readify Blog</h1>
-          {blogFilterInfo({ tag, category })}
+          {blogFilterLabel({ tag, category })}
           {chunkedBlogPosts[currentPage].map((post, i) => (
             <Row key={i} noGutters>
               <Col xs="12" lg="7">
@@ -71,11 +70,11 @@ const BlogPageTemplate = ({ blogPosts, tag, category }) => {
                   <div className="post-inner-wrapper">
                     <BlogTitle>{post.node.frontmatter.title}</BlogTitle>
                     <p className="mb-3">{post.node.excerpt}</p>
-                    <p>{blogAuthorName}</p>
-                    <p>
-                      {moment(post.node.frontmatter.date).format('ll')} •{' '}
-                      {`${post.node.timeToRead} min read`}
-                    </p>
+                    <BlogInfoContainer
+                      blogSettings={blogSettings}
+                      date={post.node.frontmatter.date}
+                      timeToRead={post.node.timeToRead}
+                    />
                   </div>
                 </PostWrapper>
               </Col>

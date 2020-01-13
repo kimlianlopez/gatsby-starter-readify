@@ -1,15 +1,19 @@
 const config = require('./data/siteConfig');
+const urljoin = require('url-join');
 
 module.exports = {
-  pathPrefix: config.pathPrefix === '' ? '/' : config.pathPrefix,
+  pathPrefix: config.pathPrefix,
   siteMetadata: {
     title: config.siteTitle,
     description: config.siteDescription,
     siteName: config.siteName,
     siteTitleAlt: config.siteTitleAlt,
     author: config.siteAuthor,
+    blogAuthorName: config.blogAuthorName,
+    blogAuthorAvatar: config.blogAuthorAvatar,
+    postsPerPage: config.postsPerPage,
     developer: config.siteDeveloper,
-    image: `${config.siteUrl}${config.pathPrefix}${config.siteImage}`,
+    logo: urljoin(config.siteUrl, config.pathPrefix, config.siteLogo),
     siteUrl: config.siteUrl
   },
   plugins: [

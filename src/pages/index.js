@@ -8,7 +8,7 @@ const IndexPage = ({ data, path }) => {
   const { frontmatter: content } = data.markdownRemark;
   return (
     <>
-      <SEO title="Home" path={path} />
+      <SEO path={path} />
       <IndexPageTemplate content={content} />
     </>
   );

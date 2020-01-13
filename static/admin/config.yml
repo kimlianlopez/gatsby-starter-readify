@@ -37,23 +37,6 @@ collections:
           - label: "Secondary Button Text"
             name: "secondaryButtonText"
             widget: "string"
-      - label: "Blog Page"
-        name: "blogPage"
-        file: "content/blog-page.md"
-        fields:
-          - label: "Page Key"
-            name: "pageKey"
-            widget: "hidden"
-            default: "blog-page"
-          - label: "Hero Title"
-            name: "heroTitle"
-            widget: "string"
-          - label: "Post Per Page"
-            name: "postPerPage"
-            widget: "number"
-            default: 5
-            min: 1
-            max: 10
   - name: "blogPost"
     label: "Blog Post"
     folder: "content/blog"
