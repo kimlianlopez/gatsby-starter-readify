@@ -91,19 +91,19 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       <title>{title}</title>
 
       {/* General tags */}
-      <meta
+      {/* <meta
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
-      />
+      /> */}
       <meta name="description" content={metaDescription} />
       <meta name="image" content={metaImage} />
       {/* <meta name="lang" content={lang} /> */}
-      <meta name="url" content={siteMetadata.siteUrl} />
-      <meta name="author" content={completePageUrl} />
+      <meta name="url" content={completePageUrl} />
+      <meta name="author" content={siteMetadata.author} />
       {/* <meta name="developer" content={siteMetadata.developer} /> */}
 
       {/* Site Canonical */}
-      <link rel="canonical" href={completePageUrl} />
+      {/* <link rel="canonical" href={siteMetadata.siteUrl} /> */}
 
       {/* Schema.org tags */}
       <script type="application/ld+json">
