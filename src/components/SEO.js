@@ -99,11 +99,11 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       <meta name="image" content={metaImage} />
       {/* <meta name="lang" content={lang} /> */}
       <meta name="url" content={siteMetadata.siteUrl} />
-      {/* <meta name="author" content={siteMetadata.author} /> */}
+      <meta name="author" content={completePageUrl} />
       {/* <meta name="developer" content={siteMetadata.developer} /> */}
 
       {/* Site Canonical */}
-      <link rel="canonical" href={siteMetadata.siteUrl} />
+      <link rel="canonical" href={completePageUrl} />
 
       {/* Schema.org tags */}
       <script type="application/ld+json">
