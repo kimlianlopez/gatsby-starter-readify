@@ -31,7 +31,11 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
   const metaImage = !!image
     ? urljoin(siteMetadata.siteUrl, image)
     : siteMetadata.logo;
-  const completePageUrl = urljoin(siteMetadata.siteUrl, pathPrefix, path);
+  const completePageUrl = urljoin(
+    siteMetadata.siteUrl,
+    pathPrefix,
+    path
+  ).replace(/\/$/, '');
   const contentType = !!isBlogPost ? 'article' : 'website';
 
   const schemaOrgJSONLD = [
