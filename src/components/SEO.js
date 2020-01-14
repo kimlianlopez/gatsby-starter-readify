@@ -98,20 +98,20 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       <meta name="description" content={metaDescription} />
       <meta name="image" content={metaImage} />
       {/* <meta name="lang" content={lang} /> */}
-      <meta name="url" content={completePageUrl} />
+      <meta name="url" content={siteMetadata.siteUrl} />
       {/* <meta name="author" content={siteMetadata.author} /> */}
       {/* <meta name="developer" content={siteMetadata.developer} /> */}
 
       {/* Site Canonical */}
-      <link rel="canonical" href={completePageUrl} />
+      <link rel="canonical" href={siteMetadata.siteUrl} />
 
       {/* Schema.org tags */}
-      {/* <script type="application/ld+json">
+      <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
-      </script> */}
+      </script>
 
       {/* OpenGraph tags */}
-      <meta property="og:url" content={completePageUrl} />
+      <meta property="og:url" content={siteMetadata.siteUrl} />
       <meta property="og:type" content={contentType} />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
