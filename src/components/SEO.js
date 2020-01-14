@@ -106,9 +106,9 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       <link rel="canonical" href={completePageUrl} />
 
       {/* Schema.org tags */}
-      <script type="application/ld+json">
+      {/* <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
-      </script>
+      </script> */}
 
       {/* OpenGraph tags */}
       <meta property="og:url" content={completePageUrl} />
