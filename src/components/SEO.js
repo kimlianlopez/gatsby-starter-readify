@@ -12,7 +12,6 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
         siteMetadata {
           title
           description
-          siteName
           siteTitleAlt
           author
           developer
@@ -92,16 +91,16 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       <title>{title}</title>
 
       {/* General tags */}
-      <meta
+      {/* <meta
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
-      />
+      /> */}
       <meta name="description" content={metaDescription} />
       <meta name="image" content={metaImage} />
-      <meta name="lang" content={lang} />
+      {/* <meta name="lang" content={lang} /> */}
       <meta name="url" content={completePageUrl} />
       <meta name="author" content={siteMetadata.author} />
-      <meta name="developer" content={siteMetadata.developer} />
+      {/* <meta name="developer" content={siteMetadata.developer} /> */}
 
       {/* Site Canonical */}
       <link rel="canonical" href={completePageUrl} />
@@ -117,8 +116,8 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={metaImage} />
-      <meta property="og:locale" content={lang} />
-      <meta property="og:site_name" content={siteMetadata.siteName} />
+      {/* <meta property="og:locale" content={lang} /> */}
+      {/* <meta property="og:site_name" content={siteMetadata.siteName} /> */}
     </Helmet>
   );
 };
