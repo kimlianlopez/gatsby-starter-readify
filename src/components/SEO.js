@@ -31,11 +31,7 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
   const metaImage = !!image
     ? urljoin(siteMetadata.siteUrl, image)
     : siteMetadata.logo;
-  const completePageUrl = urljoin(
-    siteMetadata.siteUrl,
-    pathPrefix,
-    path
-  ).replace(/\/$/, '');
+  const completePageUrl = urljoin(siteMetadata.siteUrl, pathPrefix, path);
   const contentType = !!isBlogPost ? 'article' : 'website';
 
   const schemaOrgJSONLD = [
@@ -115,7 +111,7 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       </script>
 
       {/* OpenGraph tags */}
-      <meta property="og:url" content={siteMetadata.siteUrl} />
+      <meta property="og:url" content={completePageUrl} />
       <meta property="og:type" content={contentType} />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
