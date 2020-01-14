@@ -4,7 +4,8 @@ const config = {
   siteTitleAlt: 'Gatsby Starter Readify', // Alternative site title for SEO.
   siteName: 'Gatsby Starter Readify',
   siteLogo: '/img/gatsby-starter-readify-logo.png', // Logo used for SEO and manifest.
-  siteUrl: 'https://gatsby-starter-readify.netlify.com', // Domain of your website without pathPrefix.
+  siteUrl: 'https://gatsby-readify.netlify.com', // Domain of your website without pathPrefix.
+  // siteUrl: 'https://gatsby-starter-readify.netlify.com', // Domain of your website without pathPrefix.
   siteAuthor: 'Kim Lian Lopez',
   siteDeveloper: 'Kim Lian Lopez',
   pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
