@@ -33,7 +33,7 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
     : siteMetadata.logo;
   const completePageUrl = urljoin(siteMetadata.siteUrl, pathPrefix, path);
   const contentType = !!isBlogPost ? 'article' : 'website';
-  console.log(metaImage);
+
   const schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
@@ -88,6 +88,7 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       defaultTitle={siteMetadata.title}
       titleTemplate={`%s | ${siteMetadata.title}`}>
       {/* Title */}
+      <html lang={lang} />
       <title>{title}</title>
 
       {/* Schema.org tags */}
@@ -107,7 +108,7 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       {/* <link rel="canonical" href={siteMetadata.siteUrl} /> */}
 
       {/* OpenGraph tags */}
-      <meta property="og:url" content={completePageUrl} />
+      <meta property="og:url" content={pathPrefix + path} />
       <meta property="og:type" content={contentType} />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
