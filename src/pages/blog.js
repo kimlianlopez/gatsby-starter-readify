@@ -22,7 +22,10 @@ export default BlogPage;
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(filter: { fields: { isBlogPost: { eq: true } } }) {
+    allMarkdownRemark(
+      filter: { fields: { isBlogPost: { eq: true } } }
+      sort: { fields: [fields___date], order: DESC }
+    ) {
       edges {
         node {
           timeToRead
