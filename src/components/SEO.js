@@ -105,7 +105,7 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       <meta name="developer" content={siteMetadata.developer} />
 
       {/* Site Canonical */}
-      <link rel="canonical" href={completePageUrl} />
+      {/* <link rel="canonical" href={completePageUrl} /> */}
 
       {/* OpenGraph tags */}
       <meta property="og:url" content={pathPrefix + path} />
@@ -113,8 +113,7 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={metaImage} />
-      {/* <meta property="og:locale" content={lang} /> */}
-      {/* <meta property="og:site_name" content={siteMetadata.siteName} /> */}
+      <meta property="og:site_name" content={siteMetadata.siteName} />
     </Helmet>
   );
 };
