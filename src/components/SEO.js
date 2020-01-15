@@ -33,7 +33,7 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
     : siteMetadata.logo;
   const completePageUrl = urljoin(siteMetadata.siteUrl, pathPrefix, path);
   const contentType = !!isBlogPost ? 'article' : 'website';
-
+  console.log(metaImage);
   const schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
@@ -90,25 +90,21 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       {/* Title */}
       <title>{title}</title>
 
-      {/* General tags */}
-      {/* <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
-      /> */}
-      <meta name="description" content={metaDescription} />
-      <meta name="image" content={metaImage} />
-      {/* <meta name="lang" content={lang} /> */}
-      <meta name="url" content={completePageUrl} />
-      <meta name="author" content={siteMetadata.author} />
-      {/* <meta name="developer" content={siteMetadata.developer} /> */}
-
-      {/* Site Canonical */}
-      <link rel="canonical" href={siteMetadata.siteUrl} />
-
       {/* Schema.org tags */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
       </script>
+
+      {/* General tags */}
+      <meta name="description" content={metaDescription} />
+      <meta name="image" content={metaImage} />
+      {/* <meta name="lang" content={lang} /> */}
+      {/* <meta name="url" content={completePageUrl} /> */}
+      {/* <meta name="author" content={siteMetadata.author} /> */}
+      {/* <meta name="developer" content={siteMetadata.developer} /> */}
+
+      {/* Site Canonical */}
+      {/* <link rel="canonical" href={siteMetadata.siteUrl} /> */}
 
       {/* OpenGraph tags */}
       <meta property="og:url" content={completePageUrl} />
