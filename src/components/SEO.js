@@ -99,13 +99,13 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       {/* General tags */}
       <meta name="description" content={metaDescription} />
       <meta name="image" content={metaImage} />
-      {/* <meta name="lang" content={lang} /> */}
+      <meta name="lang" content={lang} />
       {/* <meta name="url" content={completePageUrl} /> */}
-      {/* <meta name="author" content={siteMetadata.author} /> */}
-      {/* <meta name="developer" content={siteMetadata.developer} /> */}
+      <meta name="author" content={siteMetadata.author} />
+      <meta name="developer" content={siteMetadata.developer} />
 
       {/* Site Canonical */}
-      {/* <link rel="canonical" href={siteMetadata.siteUrl} /> */}
+      <link rel="canonical" href={completePageUrl} />
 
       {/* OpenGraph tags */}
       <meta property="og:url" content={pathPrefix + path} />
