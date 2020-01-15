@@ -21,6 +21,7 @@ const SEO = ({
           title
           description
           siteTitleAlt
+          siteName
           author
           developer
           logo
