@@ -127,6 +127,7 @@ const BlogPost = ({ data, path }) => {
         title={title}
         path={path}
         image={cover.childImageSharp.original.src}
+        imageAlt={coverImageAlt}
         description={description}
         isBlogPost={true}
       />

@@ -4,7 +4,15 @@ import urljoin from 'url-join';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
-const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
+const SEO = ({
+  title,
+  description,
+  lang,
+  image,
+  path,
+  imageAlt,
+  isBlogPost
+}) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -114,6 +122,13 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={metaImage} />
       <meta property="og:site_name" content={siteMetadata.siteName} />
+
+      {/* Twitter tags */}
+      <meta name="twitter:title" content={metaTitle} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image" content={metaImage} />
+      <meta name="twitter:image:alt" content={imageAlt} />
+      <meta name="twitter:card" content="summary_large_image" />
     </Helmet>
   );
 };
@@ -123,6 +138,7 @@ SEO.defaultProps = {
   description: '',
   lang: 'en',
   image: '',
+  imageAlt: '',
   isBlogPost: false
 };
 
@@ -131,6 +147,7 @@ SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   image: PropTypes.string,
+  imageAlt: PropTypes.string,
   isBlogPost: PropTypes.bool,
   path: PropTypes.string.isRequired
 };
