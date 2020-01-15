@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogCategoryTemplate = path.resolve('src/templates/blog-category.js');
 
   // Get a full list of markdown posts
-  const allMarkdownQueryResult = await graphql(`
+  const query = await graphql(`
     {
       allMarkdownRemark(filter: { fields: { isBlogPost: { eq: true } } }) {
         edges {
@@ -67,14 +67,14 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  if (allMarkdownQueryResult.errors) {
-    console.error(allMarkdownQueryResult.errors);
-    throw allMarkdownQueryResult.errors;
+  if (query.errors) {
+    console.error(query.errors);
+    throw query.errors;
   }
 
   const tagSet = new Set();
   const categorySet = new Set();
-  const allPosts = allMarkdownQueryResult.data.allMarkdownRemark.edges;
+  const allPosts = query.data.allMarkdownRemark.edges;
 
   // Sort posts
   allPosts.sort((postA, postB) => {
@@ -96,32 +96,24 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Post page creating
   allPosts.forEach((post, i) => {
+    const { tags, category } = post.node.frontmatter;
+    const { slug } = post.node.fields;
+
     // Generate a list of tags
-    if (post.node.frontmatter.tags) {
-      post.node.frontmatter.tags.forEach(tag => tagSet.add(tag));
+    if (!!tags) {
+      tags.forEach(tag => tagSet.add(tag));
     }
 
     // Generate a list of categories
-    if (post.node.frontmatter.category) {
-      categorySet.add(post.node.frontmatter.category);
+    if (!!category) {
+      categorySet.add(category);
     }
 
     // Create post pages
-    const nextID = i + 1 < allPosts.length ? i + 1 : 0;
-    const prevID = i - 1 >= 0 ? i - 1 : allPosts.length - 1;
-    const nextPost = allPosts[nextID];
-    const prevPost = allPosts[prevID];
-
     createPage({
-      path: `/blog${post.node.fields.slug}`,
+      path: `/blog${slug}`,
       component: blogPostTemplate,
-      context: {
-        slug: post.node.fields.slug,
-        nextTitle: nextPost.node.frontmatter.title,
-        nextSlug: nextPost.node.fields.slug,
-        prevTitle: prevPost.node.frontmatter.title,
-        prevSlug: prevPost.node.fields.slug
-      }
+      context: { slug }
     });
   });
 

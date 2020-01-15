@@ -179,10 +179,6 @@ export const pageQuery = graphql`
         category
         tags
       }
-      fields {
-        slug
-        date
-      }
     }
     site {
       siteMetadata {
