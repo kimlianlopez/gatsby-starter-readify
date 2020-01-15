@@ -108,7 +108,7 @@ const SEO = ({ title, description, lang, image, path, isBlogPost }) => {
       {/* <link rel="canonical" href={completePageUrl} /> */}
 
       {/* OpenGraph tags */}
-      <meta property="og:url" content={completePageUrl} />
+      <meta property="og:url" content={pathPrefix + path} />
       <meta property="og:type" content={contentType} />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
