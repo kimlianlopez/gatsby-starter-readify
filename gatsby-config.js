@@ -21,7 +21,8 @@ module.exports = {
       image_url: `${urljoin(
         config.siteUrl,
         config.pathPrefix
-      )}/logos/logo-48.png`
+      )}/logos/logo-48.png`,
+      copyright: config.copyright
     }
   },
   plugins: [
@@ -153,7 +154,6 @@ module.exports = {
                     }
                     frontmatter {
                       title
-                      cover
                       date
                       category
                       tags
