@@ -5,12 +5,12 @@ import moment from 'moment';
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 
 const BlogInfoContainer = ({ blogSettings, date, timeToRead, className }) => {
-  const { blogAuthorName, blogAuthorAvatar } = blogSettings;
+  const { author, authorAvatar } = blogSettings;
 
   return (
     <div className={`d-flex ${className}`}>
       <PreviewCompatibleImage
-        src={blogAuthorAvatar}
+        src={authorAvatar}
         style={{
           width: '60px',
           marginBottom: '0px',
@@ -19,7 +19,7 @@ const BlogInfoContainer = ({ blogSettings, date, timeToRead, className }) => {
         }}
       />
       <div className="d-flex flex-column justify-content-center">
-        <p className="m-0">{blogAuthorName}</p>
+        <p className="m-0">{author}</p>
         <p className="m-0">
           {moment(date).format('ll')} • {`${timeToRead} min read`}
         </p>

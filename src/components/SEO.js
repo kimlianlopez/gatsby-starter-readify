@@ -21,9 +21,7 @@ const SEO = ({
           title
           description
           siteTitleAlt
-          siteName
           author
-          developer
           logo
           siteUrl
         }
@@ -32,15 +30,12 @@ const SEO = ({
   `);
 
   const { pathPrefix, siteMetadata } = site;
-  // const metaTitle = !!title
-  //   ? `${title} | ${siteMetadata.title}`
-  //   : siteMetadata.title;
   const metaTitle = title || siteMetadata.title;
   const metaDescription = description || siteMetadata.description;
   const metaImage = !!image
     ? urljoin(siteMetadata.siteUrl, image)
     : siteMetadata.logo;
-  const completePageUrl = urljoin(siteMetadata.siteUrl, pathPrefix, path);
+  const completePageUrl = urljoin(siteMetadata.siteUrl, path);
   const contentType = !!isBlogPost ? 'article' : 'website';
 
   const schemaOrgJSONLD = [
@@ -77,7 +72,7 @@ const SEO = ({
       {
         '@context': 'http://schema.org',
         '@type': 'BlogPosting',
-        url: urljoin(siteMetadata.siteUrl, pathPrefix),
+        url: siteMetadata.siteUrl,
         name: title,
         alternateName: siteMetadata.siteTitleAlt
           ? siteMetadata.siteTitleAlt
@@ -109,9 +104,7 @@ const SEO = ({
       <meta name="description" content={metaDescription} />
       <meta name="image" content={metaImage} />
       <meta name="lang" content={lang} />
-      {/* <meta name="url" content={completePageUrl} /> */}
       <meta name="author" content={siteMetadata.author} />
-      <meta name="developer" content={siteMetadata.developer} />
 
       {/* Site Canonical */}
       {/* <link rel="canonical" href={completePageUrl} /> */}
@@ -122,7 +115,7 @@ const SEO = ({
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={metaImage} />
-      <meta property="og:site_name" content={siteMetadata.siteName} />
+      <meta property="og:site_name" content={siteMetadata.title} />
 
       {/* Twitter tags */}
       <meta name="twitter:title" content={metaTitle} />

@@ -2,11 +2,9 @@ const config = {
   siteTitle: 'Gatsby Starter Readify', // Site title.
   siteTitleShort: 'Gatsby Readify', // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: 'Gatsby Starter Readify', // Alternative site title for SEO.
-  siteName: 'Gatsby Starter Readify',
   siteLogo: '/logos/logo-1024.png', // Logo used for SEO and manifest.
   siteUrl: 'https://gatsby-starter-readify.netlify.com', // Domain of your website without pathPrefix.
   siteAuthor: 'Kim Lian Lopez',
-  siteDeveloper: 'Kim Lian Lopez',
   pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription:
     'A gatsby advance starter with advance SEO, Theming, and Netlify-CMS', // Website description used for RSS feeds/meta description tag.
@@ -14,11 +12,10 @@ const config = {
   dateFromFormat: 'YYYY-MM-DD', // Date format used in the frontmatter.
   // dateFormat: 'DD/MM/YYYY', // Date format for display.
   postsPerPage: 3, // Amount of posts displayed per listing page.
-  blogAuthorName: 'Kim Lian Lopez', // Username to display in the author segment.
   // userEmail: 'AdvancedUser@example.com', // Email used for RSS feed's author segment
   // userTwitter: '', // Optionally renders "Follow Me" in the UserInfo segment.
   // userLocation: 'North Pole, Earth', // User location to display in the author segment.
-  blogAuthorAvatar: '/img/author-avatar.jpg', // User avatar to display in the author segment.
+  authorAvatar: '/img/author-avatar.jpg', // User avatar to display in the author segment.
   // userDecription:
   // "Yeah, I like animals better than people sometimes... Especially dogs. Dogs are the best. Every time you come home, they act like they haven't seen you in a year. And the good thing about dogs... is they got different dogs for different people.", // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
@@ -49,9 +46,8 @@ const config = {
 // Make sure pathPrefix is empty if not needed
 if (config.pathPrefix === '/') {
   config.pathPrefix = '';
-
-  // Make sure pathPrefix only contains the first forward slash
 } else {
+  // Make sure pathPrefix only contains the first forward slash
   config.pathPrefix = `/${config.pathPrefix.replace(/^\/|\/$/g, '')}`;
 }
 

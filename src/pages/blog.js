@@ -42,8 +42,8 @@ export const pageQuery = graphql`
     }
     site {
       siteMetadata {
-        blogAuthorAvatar
-        blogAuthorName
+        author
+        authorAvatar
         postsPerPage
       }
     }

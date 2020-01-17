@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BlogPostTemplate } from '../../templates/blog-post';
 
-import { blogAuthorName, blogAuthorAvatar } from '../../../data/siteConfig';
+import { siteAuthor, authorAvatar } from '../../../data/siteConfig';
 
 const BlogPostPreview = ({ entry, widgetFor }) => {
   const data = entry.getIn(['data']).toJS();
@@ -19,7 +19,7 @@ const BlogPostPreview = ({ entry, widgetFor }) => {
         cover={data.cover}
         coverImageAlt={data.coverImageAlt}
         html={widgetFor('body')}
-        blogSettings={{ blogAuthorName, blogAuthorAvatar }}
+        blogSettings={{ author: siteAuthor, authorAvatar }}
       />
     );
   }
