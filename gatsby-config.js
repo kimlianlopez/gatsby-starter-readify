@@ -1,4 +1,5 @@
 const config = require('./data/siteConfig');
+const path = require('path');
 const urljoin = require('url-join');
 
 module.exports = {
@@ -25,6 +26,13 @@ module.exports = {
       options: {
         name: `uploads`,
         path: `${__dirname}/static/img`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `logos`,
+        path: `${__dirname}/static/logos`
       }
     },
     {
@@ -87,7 +95,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
+        modulePath: path.resolve('src/cms/cms.js'),
         enableIdentityWidget: true,
         publicPath: 'admin',
         htmlTitle: `${config.siteTitle} Content Manager`,
