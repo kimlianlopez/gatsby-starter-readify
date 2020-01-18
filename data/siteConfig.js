@@ -9,7 +9,7 @@ const config = {
   siteDescription:
     'A gatsby advance starter with advance SEO, Theming, and Netlify-CMS', // Website description used for RSS feeds/meta description tag.
   siteRss: '/rss.xml',
-  googleAnalyticsID: 'UA-153588035-1', // GA tracking ID.
+  googleAnalyticsID: 'UA-153588035-2', // GA tracking ID.
   dateFromFormat: 'YYYY-MM-DD', // Date format used in the frontmatter.
   // dateFormat: 'DD/MM/YYYY', // Date format for display.
   postsPerPage: 3, // Amount of posts displayed per listing page.
