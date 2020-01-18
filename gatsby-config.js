@@ -87,11 +87,12 @@ module.exports = {
       options: {
         name: config.siteTitle,
         short_name: config.siteTitleShort,
-        start_url: `/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
-        display: `standalone`,
-        icon: `${__dirname}/src/images/favicon.png`
+        description: config.siteDescription,
+        start_url: config.pathPrefix,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: `minimal-ui`,
+        icon: `${__dirname}/static/logos/logo-1024.png`
       }
     },
     {
