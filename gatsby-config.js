@@ -175,6 +175,7 @@ module.exports = {
         pathToConfigModule: `${__dirname}/src/utils/typography`
       }
     },
+    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
