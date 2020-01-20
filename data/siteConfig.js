@@ -24,17 +24,34 @@ const config = {
     {
       label: 'GitHub',
       url: 'https://github.com/kimlianlopez',
-      iconClassName: 'fa fa-github'
+      imgSrc: '/img/github-logo.png',
+      title: 'Open Source on GitHub'
     },
     {
       label: 'Twitter',
-      url: 'https://twitter.com/klianlopez96',
-      iconClassName: 'fa fa-twitter'
+      url: 'https://twitter.com/klianlopez96'
     },
     {
       label: 'Email',
-      url: 'mailto:kimlian.dev@gmail.com',
-      iconClassName: 'fa fa-envelope'
+      url: 'mailto:kimlian.dev@gmail.com'
+    },
+    {
+      label: 'RSS',
+      url: '/rss.xml',
+      imgSrc: '/img/rss-logo.png',
+      title: 'Open Source on GitHub'
+    },
+    {
+      label: 'Netlify',
+      url: 'https://netlify.com/',
+      imgSrc: '/img/netlify-logo.png',
+      title: 'Open Source on GitHub'
+    },
+    {
+      label: 'Gatsby',
+      url: 'https://gatsbyjs.org/',
+      imgSrc: '/img/gatsby-logo.png',
+      title: 'Open Source on GitHub'
     }
   ],
   copyright: 'Copyright © 2019. Kim Lian Lopez', // Copyright string for the footer of the website and RSS feed.
@@ -42,7 +59,7 @@ const config = {
   backgroundColor: '#ffffff' // Used for setting manifest background color.
 };
 
-// Validate
+/** VALIDATE DATA **/
 
 // Make sure pathPrefix is empty if not needed
 if (config.pathPrefix === '/') {
